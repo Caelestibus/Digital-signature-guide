@@ -77,7 +77,7 @@ openssl dgst -sha256 -verify soc_public.pem -signature soc_signature.bin soc_doc
 
 ### 🔒 Conclusion
 
-- This exercise shows how digital signatures can protect documents by:
+This exercise shows how digital signatures can protect documents by:
 
 - Ensuring integrity (detects tampering),
 
