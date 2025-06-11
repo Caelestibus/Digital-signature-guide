@@ -21,7 +21,7 @@ This is a test document for digital signature demonstration." > soc_document.txt
 
 ---
 
-### 2. Generated a 4096-bit RSA Private Key (Encrypted with AES-256)
+### 2. Generate a 4096-bit RSA Private Key (Encrypted with AES-256)
 
 ```bash
 openssl genpkey -algorithm RSA -out soc_private.key -aes256 -pkeyopt rsa_keygen_bits:4096
@@ -29,7 +29,7 @@ openssl genpkey -algorithm RSA -out soc_private.key -aes256 -pkeyopt rsa_keygen_
 
 ---
 
-### 3. Extracted the Public Key from the Private Key
+### 3. Extract the Public Key from the Private Key
 
 ```bash
 openssl rsa -pubout -in soc_private.key -out soc_public.pem
@@ -37,7 +37,7 @@ openssl rsa -pubout -in soc_private.key -out soc_public.pem
 
 ---
 
-### 4. Digitally Signed the Document using the Private Key
+### 4. Digitally Sign the Document using the Private Key
 
 ```bash
 openssl dgst -sha256 -sign soc_private.key -out soc_signature.bin soc_document.txt
@@ -45,7 +45,7 @@ openssl dgst -sha256 -sign soc_private.key -out soc_signature.bin soc_document.t
 
 ---
 
-### 5. Verified the Signature using the Public Key
+### 5. Verify the Signature using the Public Key
 
 ```bash
 openssl dgst -sha256 -verify soc_public.pem -signature soc_signature.bin soc_document.txt
@@ -56,7 +56,7 @@ openssl dgst -sha256 -verify soc_public.pem -signature soc_signature.bin soc_doc
 ---
 
 
-### 6. Tampered the Original Document
+### 6. Tamper the Original Document
 
 ```bash
 echo "This document has been altered" >> soc_document.txt
@@ -64,7 +64,7 @@ echo "This document has been altered" >> soc_document.txt
 
 ---
 
-### 7. Re-verified the Signature
+### 7. Re-verify the Signature
 
 ```bash
 openssl dgst -sha256 -verify soc_public.pem -signature soc_signature.bin soc_document.txt
